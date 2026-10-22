@@ -191,7 +191,7 @@
     var pchips = $$('.chip', planner);
     function updPlanner() {
       var picked = pchips.filter(function (c) { return c.getAttribute('aria-pressed') === 'true'; }).map(function (c) { return c.textContent.trim(); });
-      var text = 'Hello Flynn Technologies, I would like to discuss a new project.' + (picked.length ? ' I need: ' + picked.join(', ') + '.' : '');
+      var text = 'Hello Director Flynn, I would like to discuss a new project.' + (picked.length ? ' I need: ' + picked.join(', ') + '.' : '');
       send.href = 'https://wa.me/' + planner.dataset.wa + '?text=' + encodeURIComponent(text);
     }
     pchips.forEach(function (c) {
@@ -211,7 +211,7 @@
         form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true }));
         return;
       }
-      var lines = ['Hello Flynn Technologies, I would like to discuss a new project.', 'Name: ' + f.name.value.trim()];
+      var lines = ['Hello Director Flynn, I would like to discuss a new project.', 'Name: ' + f.name.value.trim()];
       if (f.companyname.value.trim()) lines.push('Company: ' + f.companyname.value.trim());
       lines.push('Interested in: ' + f.service.value);
       if (f.timeline.value) lines.push('Timeline: ' + f.timeline.value);

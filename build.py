@@ -23,7 +23,7 @@ CONFIG = {
 
 C = CONFIG
 OUT = os.path.dirname(os.path.abspath(__file__))
-WA = "https://wa.me/%s?text=%s" % (C["phone_intl"], "Hi%20Flynn%20Technologies%2C%20I%27d%20like%20to%20talk%20about%20a%20project.")
+WA = "https://wa.me/%s?text=%s" % (C["phone_intl"], "Hello%20Director%20Flynn%2C%20I%20would%20like%20to%20discuss%20a%20new%20project.")
 
 ICON = {
  "wa": '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.27-1.38A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 1 1 7 3.87Zm4.5-6.1c-.25-.12-1.46-.72-1.69-.8-.23-.09-.39-.12-.56.12-.17.25-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.17 1.75 2.67 4.24 3.74.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.23-.17-.48-.29Z"/></svg>',
@@ -37,8 +37,8 @@ ICON = {
  "next": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>',
 }
 
-NAV = [("index.html", "Home"), ("services.html", "Services"), ("work.html", "Work"),
-       ("gallery.html", "Gallery"), ("about.html", "About"), ("contact.html", "Contact")]
+NAV = [("index.html", "Base"), ("services.html", "Stack"), ("work.html", "Assets"),
+       ("gallery.html", "Gallery"), ("about.html", "Director"), ("contact.html", "Direct access")]
 
 def header(active):
     links = "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if h == active else "", t) for h, t in NAV)
@@ -47,7 +47,7 @@ def header(active):
 <header class="hdr"><div class="wrap hdr-in">
   <a class="brand" href="index.html" aria-label="Flynn Technologies home"><img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span class="brand-txt"><span class="brand-name">FLYNN</span><span class="brand-sub">Technologies</span></span></a>
   <nav class="nav" aria-label="Main">{links}</nav>
-  <div class="hdr-actions"><button class="theme-btn" type="button" aria-label="Switch to light theme">{ICON["sun"]}{ICON["moon"]}</button><a class="btn btn-primary hdr-cta" href="contact.html">Start a project</a>
+  <div class="hdr-actions"><button class="theme-btn" type="button" aria-label="Switch to light theme">{ICON["sun"]}{ICON["moon"]}</button><a class="btn btn-primary hdr-cta" href="contact.html">Brief the director</a>
   <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span><span></span></button></div>
 </div></header>
 <div class="menu" id="menu"><nav aria-label="Mobile">{mlinks}</nav>
@@ -59,10 +59,10 @@ def footer():
     return f'''<footer class="ftr"><div class="wrap">
   <div class="ftr-grid">
     <div><a class="brand" href="index.html"><img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span class="brand-txt"><span class="brand-name">FLYNN</span><span class="brand-sub">Technologies</span></span></a>
-      <p class="ftr-about">Custom software, AI automation and digital marketing from one team.</p></div>
+      <p class="ftr-about">Software engineering, AI automation and digital growth. Directed by Joseph Gitonga.</p></div>
     <div><h4>Explore</h4><ul>{nav}</ul></div>
     <div><h4>Follow</h4><ul>{soc}</ul></div>
-    <div><h4>Talk to us</h4><ul>
+    <div><h4>Direct access</h4><ul>
       <li><a href="mailto:{C["email"]}">{C["email"]}</a></li>
       <li><a href="tel:+{C["phone_intl"]}">{C["phone_display"]}</a></li>
       <li><a href="{WA}" target="_blank" rel="noopener">WhatsApp</a></li>
@@ -116,10 +116,10 @@ def shot(domain, variant, img):
 <div class="shot-body {variant}"><div class="ph" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b></div>
 <img src="assets/work/{img}" alt="Screenshot of {domain}" loading="lazy" onerror="this.remove()"></div></div>'''
 
-def cta(title="Have a project in mind?", text="Tell us what you want to build or grow. We reply within one working day."):
+def cta(title="Brief the director.", text="State the scope. Joseph Gitonga responds directly. Response SLA: one working day."):
     return f'''<section class="sec" aria-labelledby="cta-h"><div class="wrap"><div class="cta-box">
   <div><h2 id="cta-h">{title}</h2><p>{text}</p></div>
-  <div class="cta-actions"><a class="btn btn-dark" href="contact.html">Start a project</a><a class="btn btn-line-dark" href="{WA}" target="_blank" rel="noopener">Message us on WhatsApp</a></div>
+  <div class="cta-actions"><a class="btn btn-dark" href="contact.html">Open a brief</a><a class="btn btn-line-dark" href="{WA}" target="_blank" rel="noopener">WhatsApp the director</a></div>
 </div></div></section>'''
 
 # ------------------------------ HOME --------------------------------------
@@ -127,109 +127,109 @@ home_body = f'''
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div>
-      <h1 id="hero-h"><span class="rise" style="--i:0">Technology that runs your business,</span><span class="rise h-grow" style="--i:1">and grows it.</span></h1>
-      <p class="lead hero-lead rise" style="--i:2">Custom software, AI automation and digital marketing from one Kenyan team. Built for phones, built to save you time, built to bring in customers.</p>
-      <div class="hero-cta rise" style="--i:3"><a class="btn btn-primary" href="{WA}" target="_blank" rel="noopener">Book a consultation</a><a class="btn btn-ghost" href="work.html">See live projects</a></div>
+      <h1 id="hero-h"><span class="rise" style="--i:0">Flynn Technologies builds platforms</span><span class="rise h-grow" style="--i:1">that run in production.</span></h1>
+      <p class="lead hero-lead rise" style="--i:2">Storefronts that sell. Systems that run themselves. Growth you can measure. E-commerce platforms, mobile-first sites and automation for Kenyan businesses, designed, built and launched by one accountable director, from first brief to live site.</p>
+      <div class="hero-cta rise" style="--i:3"><a class="btn btn-primary" href="{WA}" target="_blank" rel="noopener">Brief the director</a><a class="btn btn-ghost" href="work.html">Audit live assets</a></div>
     </div>
     <div class="planner rise" style="--i:4" data-planner data-wa="{C["phone_intl"]}">
-      <h2>Plan your project</h2>
-      <p class="mute">Pick what you need and send it to us on WhatsApp.</p>
+      <h2>Scope your build</h2>
+      <p class="mute">Select the scope. The brief goes straight to Director Flynn on WhatsApp.</p>
       <div class="opts-row" role="group" aria-label="What do you need?">
         <button class="chip" type="button" aria-pressed="false">Custom software</button>
         <button class="chip" type="button" aria-pressed="false">AI and automation</button>
-        <button class="chip" type="button" aria-pressed="false">Marketing and growth</button>
-        <button class="chip" type="button" aria-pressed="false">Complete solution</button>
+        <button class="chip" type="button" aria-pressed="false">Digital growth</button>
+        <button class="chip" type="button" aria-pressed="false">Full platform</button>
       </div>
-      <a class="btn btn-primary" data-planner-send href="{WA}" target="_blank" rel="noopener">Send on WhatsApp</a>
-      <p class="form-note">We reply within one working day.</p>
+      <a class="btn btn-primary" data-planner-send href="{WA}" target="_blank" rel="noopener">Send brief on WhatsApp</a>
+      <p class="form-note">Response SLA: one working day.</p>
     </div>
   </div>
 </section>
 
 <section class="wrap" aria-label="Why Flynn"><ul class="strip">
-  <li><strong>Mobile-first on every build</strong><span class="mute">Fast on the phones your customers use.</span></li>
-  <li><strong>One team for build and marketing</strong><span class="mute">No handover between agencies.</span></li>
-  <li><strong>Live client sites you can visit</strong><span class="mute">Proof you can click, not promises.</span></li>
+  <li><strong>Mobile-first by default</strong><span class="mute">Built for the phone in your customer&rsquo;s hand.</span></li>
+  <li><strong>Single-director execution</strong><span class="mute">One accountable engineer from brief to production.</span></li>
+  <li><strong>Live platforms in service</strong><span class="mute">Real domains. Real customers. Open to inspection.</span></li>
 </ul></section>
 
 <section class="sec" aria-labelledby="pil-h"><div class="wrap">
-  <div class="sec-head"><h2 id="pil-h">Three ways we help you grow.</h2></div>
+  <div class="sec-head"><h2 id="pil-h">Three engineering domains.</h2></div>
   <div class="together">
-    <article><h3>Custom software</h3><p class="mute">Websites, online shops and apps built for speed and simple daily use.</p><ul class="mini"><li>Business websites and online stores</li><li>Admin portals and stock systems</li><li>Apps that install from the browser</li></ul><a class="link" href="services.html#software">See software services</a></article>
-    <article><h3>AI and automation</h3><p class="mute">Less repetitive work, running around the clock.</p><ul class="mini"><li>Assistants that answer customer questions</li><li>Orders and enquiries routed to the right person</li><li>Inventory, reports and messages kept in sync</li></ul><a class="link" href="services.html#automation">See automation services</a></article>
-    <article><h3>Digital growth</h3><p class="mute">Marketing that turns attention into customers.</p><ul class="mini"><li>Social media planning and content</li><li>SEO and paid campaigns</li><li>Brand identity and messaging</li></ul><a class="link" href="services.html#growth">See growth services</a></article>
+    <article><h3>Custom software</h3><p class="mute">Front ends engineered for mobile networks and daily operation.</p><ul class="mini"><li>Storefronts and sites built for speed</li><li>Admin portals, inventory, order state</li><li>Installable progressive web apps</li></ul><a class="link" href="services.html#software">View the stack</a></article>
+    <article><h3>AI and automation</h3><p class="mute">Automation that never clocks off.</p><ul class="mini"><li>Assistants trained on catalogue data</li><li>Branch-specific WhatsApp order routing</li><li>Inventory, reports and messages synced</li></ul><a class="link" href="services.html#automation">View automation specs</a></article>
+    <article><h3>Digital growth</h3><p class="mute">Acquisition engineered for measurable revenue.</p><ul class="mini"><li>Social distribution and content ops</li><li>Technical SEO and paid campaigns</li><li>Brand identity and positioning</li></ul><a class="link" href="services.html#growth">View growth specs</a></article>
   </div>
 </div></section>
 
 <section class="sec" aria-labelledby="build-h"><div class="wrap">
-  <div class="sec-head"><h2 id="build-h">From a simple website to a full platform.</h2><p class="lead">Start with what you need today. Everything we build can grow with your business.</p></div>
+  <div class="sec-head"><h2 id="build-h">From static site to full commerce platform.</h2><p class="lead">Each tier ships production-ready and scales into the next without a rebuild.</p></div>
   <div class="together four sw">
-    <article><h3>Business websites</h3><p class="mute">Clean, fast company sites that build trust and bring in enquiries.</p></article>
-    <article><h3>Online stores</h3><p class="mute">Catalogue, cart, secure checkout and payments, with an admin to manage products and orders.</p></article>
-    <article><h3>E-commerce platforms</h3><p class="mute">Large multi-category shops with customer accounts, stock, delivery options, reports and integrations.</p></article>
-    <article><h3>Custom web and mobile apps</h3><p class="mute">Booking, membership, logistics and internal systems built around how you work.</p><a class="link" href="services.html#software">See what we build</a></article>
+    <article><h3>Business websites</h3><p class="mute">Static pages on a global CDN. Instant loads, structured data, lead capture.</p></article>
+    <article><h3>Online stores</h3><p class="mute">Catalogue, cart and M-Pesa STK Push checkout. Admin console for products, stock and order state.</p></article>
+    <article><h3>E-commerce platforms</h3><p class="mute">Multi-branch catalogues on Cloudflare D1 or Supabase. Accounts, delivery rules, reporting, API integrations.</p></article>
+    <article><h3>Custom web and mobile apps</h3><p class="mute">Booking, membership, logistics and internal systems on serverless Workers back ends.</p><a class="link" href="services.html#software">Review the full stack</a></article>
   </div>
 </div></section>
 
 <section class="sec" aria-labelledby="who-h"><div class="wrap split-2">
   <figure class="photo"><img src="assets/img/ops-engineer.jpg" alt="Engineer reviewing plans on screens and paper in a control room" loading="lazy" onerror="this.remove()"></figure>
   <div>
-    <h2 id="who-h">Built for every kind of business.</h2>
-    <p class="lead" style="margin-top:1rem">From a one-person shop to a multi-branch operation, we build what your business needs and nothing it does not. Everything loads fast, reads clearly on a small screen and works the way your customers shop.</p>
+    <h2 id="who-h">Deployed across commercial sectors.</h2>
+    <p class="lead" style="margin-top:1rem">From single-outlet shops to multi-branch operations, Director Flynn specifies only what the operation requires. Every build is mobile-first, performance-budgeted and designed around how customers actually buy.</p>
     <ul class="checklist">
-      <li><strong>Retail and fashion</strong><span class="mute">Online catalogues and full e-commerce stores with secure checkout, stock control and delivery.</span></li>
-      <li><strong>Sports and leisure</strong><span class="mute">Shops, bookings and memberships with sale pricing and customer accounts.</span></li>
-      <li><strong>Wholesale and distribution</strong><span class="mute">Stock, orders and multi-branch dashboards in one place.</span></li>
-      <li><strong>Hospitality and travel</strong><span class="mute">Room and table enquiries, photo galleries and booking requests.</span></li>
-      <li><strong>Transport and logistics</strong><span class="mute">Passenger lists, parcel tracking and reservations.</span></li>
-      <li><strong>Professional services</strong><span class="mute">A credible website, enquiry forms and local search visibility.</span></li>
+      <li><strong>Retail and fashion</strong><span class="mute">Catalogues and full e-commerce: STK Push checkout, stock control, delivery rules.</span></li>
+      <li><strong>Sports and leisure</strong><span class="mute">Shops, bookings, memberships. Sale pricing, wishlists, customer accounts.</span></li>
+      <li><strong>Wholesale and distribution</strong><span class="mute">Stock, orders and multi-branch dashboards in one operating portal.</span></li>
+      <li><strong>Hospitality and travel</strong><span class="mute">Room and table enquiries, media galleries, booking requests routed to the manager.</span></li>
+      <li><strong>Transport and logistics</strong><span class="mute">Digital manifests, parcel tracking, reservations.</span></li>
+      <li><strong>Professional services</strong><span class="mute">Credible web presence, lead capture, local search visibility.</span></li>
     </ul>
   </div>
 </div></section>
 
 <section class="sec sec--alt" aria-labelledby="work-h"><div class="wrap">
-  <div class="sec-head"><h2 id="work-h">Live work, ready to visit.</h2><p class="lead">Two Kenyan online shops, both built to be fast on a phone and to be easy to buy from.</p></div>
+  <div class="sec-head"><h2 id="work-h">Production assets. Live and auditable.</h2><p class="lead">Two Kenyan e-commerce platforms in service. Mobile-first, performance-budgeted, open to inspection.</p></div>
   <div class="works">
     <a class="work" href="work-maggies-collection.html">{shot("maggiescollection.co.ke", "v1", "maggies-collection.jpg")}
-      <div class="work-meta"><h3>Maggie&rsquo;s Collection</h3><p class="mute">A family fashion store in Kimana Town, online with a catalogue, size guide, holds and local delivery.</p><ul class="tags"><li>Web design</li><li>Development</li></ul><span class="link">Read the case study</span></div></a>
+      <div class="work-meta"><h3>Maggie&rsquo;s Collection</h3><p class="mute">Family fashion retail, Kimana Town. Catalogue, size guide, holds and local delivery.</p><ul class="tags"><li>Storefront</li><li>Commerce</li></ul><span class="link">Open the audit</span></div></a>
     <a class="work" href="work-baari-sports-centre.html">{shot("baarisportscentre.co.ke", "v2", "baari-sports-centre.jpg")}
-      <div class="work-meta"><h3>Baari Sports Centre</h3><p class="mute">A sports shop online, with categories, sale prices, a cart and a live chat button.</p><ul class="tags"><li>Web design</li><li>Development</li></ul><span class="link">Read the case study</span></div></a>
+      <div class="work-meta"><h3>Baari Sports Centre</h3><p class="mute">Sports retail platform. Category navigation, sale pricing, cart and live chat.</p><ul class="tags"><li>Storefront</li><li>Commerce</li></ul><span class="link">Open the audit</span></div></a>
   </div>
 </div></section>
 
 <section class="sec sec--alt" aria-labelledby="gets-h"><div class="wrap">
-  <div class="sec-head"><h2 id="gets-h">What comes with every project</h2><p class="lead">The basics that make a site work for your business, included from the start.</p></div>
+  <div class="sec-head"><h2 id="gets-h">Standard on every deployment</h2><p class="lead">Baseline specification. No line items, no upsell.</p></div>
   <ul class="gets">
     <li><h3>Mobile-first design</h3><p>Designed on a phone screen first, then scaled up.</p></li>
-    <li><h3>Easy ways to reach you</h3><p>Call, message or form, one tap away from any page.</p></li>
-    <li><h3>Search-friendly structure</h3><p>Page titles, descriptions and a sitemap so Google can read your site.</p></li>
-    <li><h3>Fast loading</h3><p>Compressed images and lean code for slow connections.</p></li>
-    <li><h3>Analytics</h3><p>See how many people visit and which pages they use.</p></li>
-    <li><h3>Easy updates</h3><p>Change text, photos and prices without a developer.</p></li>
-    <li><h3>Secure hosting guidance</h3><p>HTTPS, backups and a clear plan for your domain.</p></li>
-    <li><h3>Training and handover</h3><p>We show you how everything works before we step back.</p></li>
+    <li><h3>Direct contact paths</h3><p>Call, WhatsApp and form access from every page.</p></li>
+    <li><h3>Search-ready markup</h3><p>Titles, meta, sitemap and structured data on every route.</p></li>
+    <li><h3>Built for speed</h3><p>Compressed images and lean code, tuned for slow connections.</p></li>
+    <li><h3>Analytics</h3><p>Traffic, page-level behaviour and conversion events tracked.</p></li>
+    <li><h3>Operator-editable content</h3><p>Text, photos and prices change without a deployment.</p></li>
+    <li><h3>Secure hosting</h3><p>HTTPS, backups and domain configuration documented.</p></li>
+    <li><h3>Training and handover</h3><p>Documented walkthrough before the system passes to the operator.</p></li>
   </ul>
 </div></section>
 
 <section class="sec" aria-labelledby="proc-h"><div class="wrap" data-hscroll>
-  <div class="head-row"><div class="sec-head" style="margin-bottom:0"><h2 id="proc-h">How a project runs</h2><p class="lead">Five steps, the same every time, so you always know what happens next.</p></div>
+  <div class="head-row"><div class="sec-head" style="margin-bottom:0"><h2 id="proc-h">Delivery sequence</h2><p class="lead">Five phases. Fixed order. Defined outputs.</p></div>
     <div class="hs-ctrl"><button class="icon-btn" type="button" data-hs="-1" aria-label="Previous step">{ICON["prev"]}</button><button class="icon-btn" type="button" data-hs="1" aria-label="Next step">{ICON["next"]}</button></div></div>
-  <ol class="hscroll" tabindex="0" aria-label="Project steps, scroll sideways"><li class="gcard"><span class="n" aria-hidden="true">1</span><h3>Listen</h3><p>We learn your business, your customers and what success looks like.</p></li><li class="gcard"><span class="n" aria-hidden="true">2</span><h3>Plan</h3><p>You get a clear scope, timeline and price before any work starts.</p></li><li class="gcard"><span class="n" aria-hidden="true">3</span><h3>Build</h3><p>We design and develop in stages, and you review each one.</p></li><li class="gcard"><span class="n" aria-hidden="true">4</span><h3>Launch</h3><p>We test on real phones and browsers, then go live together.</p></li><li class="gcard"><span class="n" aria-hidden="true">5</span><h3>Grow</h3><p>Marketing, reporting and updates keep the results moving.</p></li></ol>
+  <ol class="hscroll" tabindex="0" aria-label="Project steps, scroll sideways"><li class="gcard"><span class="n" aria-hidden="true">1</span><h3>Discover</h3><p>Director Flynn audits operations, customers and success metrics.</p></li><li class="gcard"><span class="n" aria-hidden="true">2</span><h3>Plan</h3><p>Written scope, timeline and price. Nothing starts without sign-off.</p></li><li class="gcard"><span class="n" aria-hidden="true">3</span><h3>Build</h3><p>Staged delivery. Each stage reviewed and approved before the next.</p></li><li class="gcard"><span class="n" aria-hidden="true">4</span><h3>Launch</h3><p>Tested on real devices and networks, then deployed to production.</p></li><li class="gcard"><span class="n" aria-hidden="true">5</span><h3>Grow</h3><p>Reporting, optimisation and marketing against measured targets.</p></li></ol>
 </div></section>
 <section class="sec" aria-labelledby="hfaq-h"><div class="wrap">
-  <div class="sec-head"><h2 id="hfaq-h">Quick answers</h2></div>
+  <div class="sec-head"><h2 id="hfaq-h">Direct answers</h2></div>
   <div class="faq">
-    <details><summary>How long does a project take?</summary><p>A typical business website takes three to six weeks. Online shops, apps and custom systems take longer, and you get a timeline in the plan before you commit.</p></details>
-    <details><summary>What does it cost?</summary><p>It depends on what you need. After a short call we send a written quote that lists exactly what is included. Marketing is billed monthly.</p></details>
-    <details><summary>Do I have to use both software and marketing?</summary><p>No. Many clients start with one. Using both means the website and the campaigns are planned together, which saves time and money.</p></details>
-    <details><summary>Can you build a full online store?</summary><p>Yes. From a simple catalogue to a full e-commerce platform with product management, secure checkout, M-Pesa and other online payments, stock tracking, delivery options and an admin dashboard. If your customers prefer to order on WhatsApp, we can connect that too.</p></details>
+    <details><summary>How long does a project take?</summary><p>Business sites: three to six weeks. Commerce platforms, apps and custom systems: scoped per build, with a fixed timeline in the written plan.</p></details>
+    <details><summary>What does it cost?</summary><p>Priced per scope. After a short call, a written quote itemises every deliverable. Marketing runs on a monthly retainer.</p></details>
+    <details><summary>Are software and marketing sold together?</summary><p>No. Each runs independently. Combined engagements share one plan, one data layer and one point of accountability.</p></details>
+    <details><summary>Can you build a full e-commerce platform?</summary><p>Yes. Product management, secure checkout, M-Pesa Daraja STK Push with callback reconciliation, stock tracking, delivery rules and an admin dashboard on Cloudflare D1 or Supabase. Branch-specific WhatsApp order routing is available.</p></details>
   </div>
-  <p style="margin-top:1.5rem"><a class="link" href="services.html#faq-h">See all questions</a></p>
+  <p style="margin-top:1.5rem"><a class="link" href="services.html#faq-h">Open the full FAQ</a></p>
 </div></section>
 {cta()}
 '''
 org_ld = '<script type="application/ld+json">' + __import__("json").dumps({"@context":"https://schema.org","@type":"ProfessionalService","name":"Flynn Technologies","url":C["domain"],"logo":C["domain"]+"/assets/img/logo-mark.svg","image":C["domain"]+"/assets/img/og-image.png","email":C["email"],"telephone":"+"+C["phone_intl"],"areaServed":"Kenya","founder":{"@type":"Person","name":"Joseph Gitonga"},"description":"Custom software, AI automation and digital marketing for businesses in Kenya.","serviceType":["Custom software development","Website and online shop development","AI and business automation","Social media marketing","SEO and digital advertising"]}) + '</script>'
-page("index.html", "Flynn Technologies | Custom software, AI automation and digital marketing",
+page("index.html", "Flynn Technologies | Director Joseph Gitonga: software, AI automation, commerce",
      "Flynn Technologies builds custom software, automates repetitive work with AI, builds websites and online stores, and runs the digital marketing that grows your business in Kenya.",
      home_body, "index.html", org_ld)
 
