@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="Flynn Technologies">
+  <defs>
+    <linearGradient id="fg" x1="8" y1="44" x2="42" y2="4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <!-- stem -->
+  <path d="M13 43V13" stroke="url(#fg)" stroke-width="6" stroke-linecap="round"/>
+  <!-- top arm bends upward into a growth arrow -->
+  <path d="M13 13H26L37 6" stroke="url(#fg)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30 5.5H37.5V13" stroke="#F97316" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- middle arm ends in a code bracket -->
+  <path d="M13 30.5H23M32 24L23 30.5L32 37" stroke="url(#fg)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
