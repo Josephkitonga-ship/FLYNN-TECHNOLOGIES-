@@ -641,3 +641,28 @@ dialog.lb .icon-btn{color:#fff;background:rgba(255,255,255,.08);border-color:rgb
 @media (max-width:1100px){.together.four{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.together.four{grid-template-columns:1fr}}
 .together.four.sw article:nth-child(4){border-top-color:var(--blue-2)}
+
+/* ==========================================================
+   MOBILE BOTTOM NAVIGATION (WhatsApp-style)
+   ========================================================== */
+.bnav{display:none}
+@media (max-width:860px){
+  .bnav{position:fixed;left:0;right:0;bottom:0;z-index:95;display:grid;grid-template-columns:repeat(5,1fr);padding:.45rem .2rem calc(.45rem + env(safe-area-inset-bottom));background:var(--menu);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--line)}
+  .bnav a{display:grid;justify-items:center;align-content:center;gap:.28rem;min-height:56px;padding:.15rem 0;text-decoration:none;color:var(--mute);font:700 .68rem/1.1 var(--font-body);letter-spacing:.01em;-webkit-tap-highlight-color:transparent}
+  .bnav .ic{display:grid;place-items:center;width:60px;height:32px;border-radius:999px;transition:background .25s,color .25s,transform .25s var(--ease)}
+  .bnav svg,.bnav img{width:22px;height:22px}
+  .bnav svg{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .bnav a[aria-current="page"]{color:var(--paper)}
+  .bnav a[aria-current="page"] .ic{background:rgba(37,99,235,.3);color:#8DBBFF}
+  .bnav a[aria-current="page"] svg{fill:currentColor;fill-opacity:.25;stroke-width:2.1}
+  .bnav a:active .ic{transform:scale(.92)}
+  :root[data-theme="light"] .bnav a[aria-current="page"] .ic{background:rgba(37,99,235,.14);color:#1D4ED8}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+  .wa{bottom:calc(84px + env(safe-area-inset-bottom))}
+}
+@media (max-width:360px){.bnav a{font-size:.62rem}.bnav .ic{width:52px}}
+@media (max-width:860px){
+  .bnav a{font-size:.64rem;letter-spacing:0}
+  .bnav a>span:last-child{white-space:nowrap}
+}
+@media (max-width:370px){.bnav a{font-size:.58rem}}

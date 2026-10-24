@@ -42,16 +42,24 @@ NAV = [("index.html", "Base"), ("services.html", "Stack"), ("work.html", "Assets
 
 def header(active):
     links = "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if h == active else "", t) for h, t in NAV)
-    mlinks = "".join('<a href="%s" style="--i:%d"%s>%s</a>' % (h, i, ' aria-current="page"' if h == active else "", t) for i, (h, t) in enumerate(NAV))
     return f'''<a class="skip" href="#main">Skip to content</a>
 <header class="hdr"><div class="wrap hdr-in">
   <a class="brand" href="index.html" aria-label="Flynn Technologies home"><img src="assets/img/logo-mark.svg" alt="" width="36" height="36"><span class="brand-txt"><span class="brand-name">FLYNN</span><span class="brand-sub">Technologies</span></span></a>
   <nav class="nav" aria-label="Main">{links}</nav>
-  <div class="hdr-actions"><button class="theme-btn" type="button" aria-label="Switch to light theme">{ICON["sun"]}{ICON["moon"]}</button><a class="btn btn-primary hdr-cta" href="contact.html">Brief the director</a>
-  <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span><span></span></button></div>
-</div></header>
-<div class="menu" id="menu"><nav aria-label="Mobile">{mlinks}</nav>
-  <div class="menu-foot"><a href="mailto:{C["email"]}">{C["email"]}</a><a href="tel:+{C["phone_intl"]}">{C["phone_display"]}</a><span>{C["location"]}</span></div></div>'''
+  <div class="hdr-actions"><button class="theme-btn" type="button" aria-label="Switch to light theme">{ICON["sun"]}{ICON["moon"]}</button><a class="btn btn-primary hdr-cta" href="contact.html">Brief the director</a></div>
+</div></header>'''
+
+def bottom_nav(active):
+    cur = "work.html" if active == "gallery.html" else active
+    P = {
+     "index.html": '<img src="assets/img/logo-mark.svg" alt="" width="22" height="22">',
+     "services.html": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg>',
+     "work.html": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>',
+     "about.html": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
+     "contact.html": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>',
+    }
+    tabs = "".join('<a href="%s"%s><span class="ic">%s</span><span>%s</span></a>' % (h, ' aria-current="page"' if h == cur else "", P[h], t) for h, t in NAV if h in P)
+    return '<nav class="bnav" aria-label="Primary">%s</nav>' % tabs
 
 def footer():
     soc = "".join('<li><a href="%s" target="_blank" rel="noopener">%s</a></li>' % (u, n) for n, u in C["socials"].items())
@@ -103,6 +111,7 @@ def page(fname, title, desc, body, active, extra_head=""):
 {body}
 </main>
 {footer()}
+{bottom_nav(active)}
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
@@ -315,6 +324,7 @@ work_body = f'''
     <a class="work" href="work-baari-sports-centre.html">{shot("baarisportscentre.co.ke", "v2", "baari-sports-centre.jpg")}
       <div class="work-meta"><h3>Baari Sports Centre</h3><p class="mute">A sports shop online, with categories, sale prices, a cart and a live chat button.</p><ul class="tags"><li>Web design</li><li>Development</li></ul><span class="link">Read the case study</span></div></a>
   </div>
+  <p style="margin-top:2rem"><a class="link" href="gallery.html">Browse the project gallery</a></p>
   <div class="work-cta" style="margin-top:2rem"><h3>Your project could be next.</h3><p class="mute">We are taking on new software, automation and marketing work.</p><a class="btn btn-primary" href="contact.html">Start a project</a></div>
 </div></section>
 '''
